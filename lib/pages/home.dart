@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/pages/details.dart';
 import 'package:food_app/widget/widget_support.dart';
 
 class Home extends StatefulWidget {
@@ -65,41 +66,47 @@ class _HomeState extends State<Home> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  Container(
-                    margin: EdgeInsets.all(4),
-                    child: Material(
-                      elevation: 5.0,
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        padding: EdgeInsets.all(14),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              "images/salad2.png",
-                              height: 150,
-                              width: 150,
-                              fit: BoxFit.cover,
-                            ),
-                            Text(
-                              "Vegetable",
-                              style: AppWidget.HeadlineTextFieldStyle(),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Fresh and Healthy",
-                              style: AppWidget.LineTextFieldStyle(),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "\$25",
-                              style: AppWidget.HeadlineTextFieldStyle(),
-                            )
-                          ],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Details()));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(4),
+                      child: Material(
+                        elevation: 5.0,
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          padding: EdgeInsets.all(14),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "images/salad2.png",
+                                height: 150,
+                                width: 150,
+                                fit: BoxFit.cover,
+                              ),
+                              Text(
+                                "Vegetable",
+                                style: AppWidget.HeadlineTextFieldStyle(),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "Fresh and Healthy",
+                                style: AppWidget.LineTextFieldStyle(),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "\$25",
+                                style: AppWidget.HeadlineTextFieldStyle(),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
