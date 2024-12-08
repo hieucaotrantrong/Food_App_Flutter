@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
                               fit: BoxFit.cover,
                             ),
                             Text(
-                              "Veggie Taco Hash",
+                              "Vegetable",
                               style: AppWidget.HeadlineTextFieldStyle(),
                             ),
                             SizedBox(
@@ -125,7 +125,7 @@ class _HomeState extends State<Home> {
                               fit: BoxFit.cover,
                             ),
                             Text(
-                              "Mix Veg Salad",
+                              "MixVeg Salad",
                               style: AppWidget.HeadlineTextFieldStyle(),
                             ),
                             SizedBox(
@@ -155,37 +155,58 @@ class _HomeState extends State<Home> {
               height: 30,
             ),
             Container(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    "images/salad2.png",
-                    height: 120,
-                    width: 120,
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Column(
+              margin: EdgeInsets.only(right: 20.0),
+              child: Material(
+                elevation: 5.0,
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  padding: EdgeInsets.all(5),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(
-                          "Medilterranmean Chickpea salad",
-                          style: AppWidget.HeadlineTextFieldStyle(),
-                        ),
+                      Image.asset(
+                        "images/salad2.png",
+                        height: 120,
+                        width: 120,
+                        fit: BoxFit.cover,
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(
-                          "Honey goot cheese",
-                          style: AppWidget.LineTextFieldStyle(),
-                        ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Text(
+                              "Mediterranean green bean salad",
+                              style: AppWidget.HeadlineTextFieldStyle(),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5.0,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Text(
+                              "Honey goot cheese",
+                              style: AppWidget.LineTextFieldStyle(),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5.0,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: Text(
+                              "\$28",
+                              style: AppWidget.HeadlineTextFieldStyle(),
+                            ),
+                          )
+                        ],
                       )
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
             )
           ],
