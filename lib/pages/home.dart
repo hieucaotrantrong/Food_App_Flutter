@@ -149,6 +149,44 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
+            ),
+            //medilterranmean
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    "images/salad2.png",
+                    height: 120,
+                    width: 120,
+                    fit: BoxFit.cover,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2,
+                        child: Text(
+                          "Medilterranmean Chickpea salad",
+                          style: AppWidget.HeadlineTextFieldStyle(),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2,
+                        child: Text(
+                          "Honey goot cheese",
+                          style: AppWidget.LineTextFieldStyle(),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ),
