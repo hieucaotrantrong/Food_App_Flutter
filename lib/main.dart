@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_app/pages/bottomnav.dart';
 import 'package:food_app/pages/home.dart';
 import 'package:food_app/pages/login.dart';
+import 'package:food_app/pages/onboard.dart';
 import 'package:food_app/pages/signup.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SignUp(),
+      home: const Onboard(),
     );
   }
 }
