@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/pages/bottomnav.dart';
 import 'package:food_app/pages/login.dart';
 import 'package:food_app/widget/widget_support.dart';
 
@@ -10,10 +12,54 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String email = "", Password = "", name = "";
+  //write function
+  String email = "", password = "", name = "";
   TextEditingController namecontroller = new TextEditingController();
   TextEditingController passwordcontroller = new TextEditingController();
   TextEditingController mailcontroller = new TextEditingController();
+
+  final _formkey = GlobalKey<FormState>();
+  registration() async {
+    if (password != null) {
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password);
+        ScaffoldMessenger.of(context).showSnackBar((SnackBar(
+            backgroundColor: Colors.redAccent,
+            content: Text(
+              "Đăng Kí thành công",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ))));
+        Navigator.pushReplacement(
+            // ignore: use_build_context_synchronously
+            context,
+            MaterialPageRoute(builder: (context) => BottomNav()));
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'Mật khẩu yếu') {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Mật khẩu yếu",
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              )));
+        } else if (e.code == "email-already-i-use") {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Tài khoản đã tồn tại",
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              )));
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,77 +124,113 @@ class _SignUpState extends State<SignUp> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       //login
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Text(
-                            "Sign up",
-                            style: AppWidget.HeadlineTextFieldStyle(),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          //name
-                          TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Name',
-                              hintStyle: AppWidget.semiBoldTextFieldStyle(),
-                              prefixIcon: Icon(Icons.person_outline),
+                      child: Form(
+                        key: _formkey,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 30,
                             ),
-                          ),
-                          //
-                          SizedBox(
-                            height: 30,
-                          ),
-                          TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Email',
-                              hintStyle: AppWidget.semiBoldTextFieldStyle(),
-                              prefixIcon: Icon(Icons.email_outlined),
+                            Text(
+                              "Sign up",
+                              style: AppWidget.HeadlineTextFieldStyle(),
                             ),
-                          ),
-                          //sing in
-                          SizedBox(
-                            height: 30,
-                          ),
-                          TextField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              hintText: 'Password',
-                              hintStyle: AppWidget.semiBoldTextFieldStyle(),
-                              prefixIcon: Icon(Icons.password_outlined),
+                            SizedBox(
+                              height: 30,
                             ),
-                          ),
-
-                          SizedBox(
-                            height: 80,
-                          ),
-                          Material(
-                            elevation: 5,
-                            borderRadius: BorderRadius.circular(20),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 8),
-                              width: 200,
-                              decoration: BoxDecoration(
-                                color: Color(0Xffff5722),
-                                borderRadius: BorderRadius.circular(20),
+                            //name
+                            TextFormField(
+                              controller: namecontroller,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Vui lòng nhập Email';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                hintText: 'Name',
+                                hintStyle: AppWidget.semiBoldTextFieldStyle(),
+                                prefixIcon: Icon(Icons.person_outline),
                               ),
-                              child: Center(
-                                child: Text(
-                                  "SIGN UP",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.bold,
+                            ),
+                            //email
+                            SizedBox(
+                              height: 30,
+                            ),
+                            TextFormField(
+                              controller: mailcontroller,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Vui lòng nhập tên';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                hintText: 'Email',
+                                hintStyle: AppWidget.semiBoldTextFieldStyle(),
+                                prefixIcon: Icon(Icons.email_outlined),
+                              ),
+                            ),
+                            //sing in
+                            SizedBox(
+                              height: 30,
+                            ),
+                            TextFormField(
+                              controller: passwordcontroller,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Vui lòng nhập mật khẩu';
+                                }
+                                return null;
+                              },
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                hintText: 'Password',
+                                hintStyle: AppWidget.semiBoldTextFieldStyle(),
+                                prefixIcon: Icon(Icons.password_outlined),
+                              ),
+                            ),
+
+                            SizedBox(
+                              height: 80,
+                            ),
+                            GestureDetector(
+                              onTap: () async {
+                                if (_formkey.currentState!.validate()) {
+                                  setState(() {
+                                    email = mailcontroller.text;
+                                    name = namecontroller.text;
+                                    password = passwordcontroller.text;
+                                  });
+                                }
+                                registration();
+                              },
+                              child: Material(
+                                elevation: 5,
+                                borderRadius: BorderRadius.circular(20),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(vertical: 8),
+                                  width: 200,
+                                  decoration: BoxDecoration(
+                                    color: Color(0Xffff5722),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "SIGN UP",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

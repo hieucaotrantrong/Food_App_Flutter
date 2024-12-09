@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:100869026547:android:afe057a035fe8f0c4a3d86",
+        "android_client_info": {
+          "package_name": "com.example.foodApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAvEMuqk1TsqN3kxFYT_Xt0ZlBUrxqSrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:100869026547:android:67fbe240cb0928924a3d86",
         "android_client_info": {
           "package_name": "com.example.food_app"
