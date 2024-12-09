@@ -152,8 +152,9 @@ class _SignUpState extends State<SignUp> {
                     height: 70,
                   ),
                   GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>LogIn()));
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LogIn()));
                     },
                     child: Text(
                       "Already have an account?Login",
