@@ -94,6 +94,7 @@ class _LogInState extends State<LogIn> {
                             height: 30,
                           ),
                           TextField(
+                            obscureText: true,
                             decoration: InputDecoration(
                               hintText: 'Password',
                               hintStyle: AppWidget.semiBoldTextFieldStyle(),
@@ -139,6 +140,10 @@ class _LogInState extends State<LogIn> {
                         ],
                       ),
                     ),
+                  ),
+                  Text(
+                    "Dont have an account? Sigup up",
+                    style: AppWidget.semiBoldTextFieldStyle(),
                   )
                 ],
               ),
