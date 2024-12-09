@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/pages/signup.dart';
 import 'package:food_app/widget/widget_support.dart';
 
 class LogIn extends StatefulWidget {
@@ -82,6 +83,9 @@ class _LogInState extends State<LogIn> {
                             "Login",
                             style: AppWidget.HeadlineTextFieldStyle(),
                           ),
+                          SizedBox(
+                            height: 30,
+                          ),
                           TextField(
                             decoration: InputDecoration(
                               hintText: 'Email',
@@ -108,7 +112,7 @@ class _LogInState extends State<LogIn> {
                             alignment: Alignment.topRight,
                             child: Text(
                               "Forgot Password?",
-                              style: AppWidget.HeadlineTextFieldStyle(),
+                              style: AppWidget.boldTextFieldStyle(),
                             ),
                           ),
                           SizedBox(
@@ -141,9 +145,18 @@ class _LogInState extends State<LogIn> {
                       ),
                     ),
                   ),
-                  Text(
-                    "Dont have an account? Sigup up",
-                    style: AppWidget.semiBoldTextFieldStyle(),
+                  SizedBox(
+                    height: 70,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SignUp()));
+                    },
+                    child: Text(
+                      "Dont have an account?Sigup up",
+                      style: AppWidget.boldTextFieldStyle(),
+                    ),
                   )
                 ],
               ),
