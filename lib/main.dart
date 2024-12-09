@@ -11,8 +11,7 @@ import 'package:food_app/pages/signup.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions
-        .currentPlatform, // Sử dụng cấu hình Firebase cho đúng nền tảng
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
 }

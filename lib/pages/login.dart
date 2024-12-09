@@ -154,7 +154,7 @@ class _LogInState extends State<LogIn> {
                           MaterialPageRoute(builder: (context) => SignUp()));
                     },
                     child: Text(
-                      "Dont have an account?Sigup up",
+                      "Dont have an account?Sign up",
                       style: AppWidget.boldTextFieldStyle(),
                     ),
                   )
