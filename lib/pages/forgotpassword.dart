@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/pages/signup.dart';
 
 class Forgotpassword extends StatefulWidget {
   const Forgotpassword({super.key});
@@ -105,15 +106,42 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Bạn chưa có tài khoản?",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUp()));
+                        },
+                        child: Text(
+                          "Tạo tài khoản",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 184, 166, 6),
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      )
+                    ],
+                  )
                 ],
               ),
             ))),
-            SizedBox(
-              height: 50,
-            ),
-            Row(
-              children: [Text("Bạn chưa có tài khoản?")],
-            )
           ],
         ),
       ),
