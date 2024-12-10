@@ -14,16 +14,91 @@ class _WalletState extends State<Wallet> {
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(
-          top: 50,
+          top: 60,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Text(
-                "Wallet",
-                style: AppWidget.HeadlineTextFieldStyle(),
+            Container(
+              child: Material(
+                elevation: 2.0,
+                child: Container(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: Center(
+                    child: Text(
+                      "Wallet",
+                      style: AppWidget.HeadlineTextFieldStyle(),
+                    ),
+                  ),
+                ),
               ),
             ),
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(color: Color(0xFFF2F2F2)),
+              child: Row(
+                children: [
+                  Image.asset(
+                    "images/wallet.png",
+                    height: 60,
+                    width: 60,
+                    fit: BoxFit.cover,
+                  ),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Tài khoản của bạn",
+                        style: AppWidget.LineTextFieldStyle(),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        "\$" + "100",
+                        style: AppWidget.boldTextFieldStyle(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Text(
+                "Add monney",
+                style: AppWidget.semiBoldTextFieldStyle(),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color(0xFFE9E2E2),
+                      ),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Text(
+                    "\$" + "100",
+                    style: AppWidget.LineTextFieldStyle(),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
