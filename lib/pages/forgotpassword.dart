@@ -14,6 +14,7 @@ class _ForgotpasswordState extends State<Forgotpassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Container(
         child: Column(
           children: [
@@ -35,7 +36,7 @@ class _ForgotpasswordState extends State<Forgotpassword> {
               height: 10,
             ),
             Text(
-              "Nhập Emaik",
+              "Nhập Email",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -86,10 +87,33 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                   SizedBox(
                     height: 40,
                   ),
-                  Container()
+                  Container(
+                    width: 140,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Gửi Email",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            )))
+            ))),
+            SizedBox(
+              height: 50,
+            ),
+            Row(
+              children: [Text("Bạn chưa có tài khoản?")],
+            )
           ],
         ),
       ),
