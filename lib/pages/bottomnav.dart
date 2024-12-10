@@ -26,7 +26,7 @@ class _MyWidgetState extends State<BottomNav> {
     order = Order();
     profile = Profile();
     wallet = Wallet();
-    pages = [homepage, order, profile, wallet];
+    pages = [homepage, order, wallet, profile];
     super.initState();
   }
 

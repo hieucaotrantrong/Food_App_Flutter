@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/widget/widget_support.dart';
 
 class Wallet extends StatefulWidget {
   const Wallet({super.key});
@@ -10,6 +11,22 @@ class Wallet extends StatefulWidget {
 class _WalletState extends State<Wallet> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Container(
+        margin: EdgeInsets.only(
+          top: 50,
+        ),
+        child: Column(
+          children: [
+            Center(
+              child: Text(
+                "Wallet",
+                style: AppWidget.HeadlineTextFieldStyle(),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
