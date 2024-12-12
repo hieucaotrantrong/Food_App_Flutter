@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Hieu Senior",
+                  "Cao Hieu",
                   style: AppWidget.boldTextFieldStyle(),
                 ),
                 Container(

@@ -2,7 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/pages/bottomnav.dart';
 import 'package:food_app/pages/login.dart';
+// import 'package:food_app/service/databse.dart';
+// import 'package:food_app/service/shared_pref.dart';
+import 'package:food_app/sevice/shared_pref.dart';
 import 'package:food_app/widget/widget_support.dart';
+import 'package:random_string/random_string.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -32,6 +36,19 @@ class _SignUpState extends State<SignUp> {
                 fontSize: 20,
               ),
             ))));
+        //-------------------------------
+        String Id = randomAlphaNumeric(10);
+        Map<String, dynamic> addUserInfo = {
+          'id': Id,
+          'name': namecontroller,
+          'email': mailcontroller,
+          "Wallet": "0",
+        };
+        // await DatabseMethods().addUserDetail(addUserInfo, Id);
+        await SharedPreferenceHelper().saveUserName(namecontroller.text);
+        await SharedPreferenceHelper().saveUserEmail(mailcontroller.text);
+        await SharedPreferenceHelper().saveUserWallet('0');
+        await SharedPreferenceHelper().saveUserId(Id);
         Navigator.pushReplacement(
             // ignore: use_build_context_synchronously
             context,
